@@ -1,6 +1,6 @@
 // Loading require modules
 const express = require("express"),
-  mysql = require("mysql"),
+  mysql = require("mysql2"),
   bodyParser = require("body-parser"),
   dateFormat = require("dateformat"),
   path = require("path"),
@@ -38,15 +38,22 @@ const publicDirectroy = path.join(__dirname, "/public");
 app.use(express.static(publicDirectroy));
 
 // Create a mysql connection
+// const db = mysql.createConnection({
+//   host: "sql12.freesqldatabase.com",
+//   user: "sql12657125",
+//   password: "ukhE93N3M8",
+//   database: "sql12657125",
+// });
+
 const db = mysql.createConnection({
-  host: "sql12.freesqldatabase.com",
-  user: "sql12657125",
-  password: "ukhE93N3M8",
-  database: "sql12657125",
+  host: "localhost",
+  user: "root",
+  password: "abuRAYHAN@1987",
+  database: "event-db",
 });
 
 // Establish a mysql connection
-db.connect();
+// db.connect();
 
 // Query from database
 // Create an express server for view tha data from a database
@@ -72,8 +79,10 @@ app.get("/event/add", (req, res) => {
 
 // Send or insert the data into Database
 app.post("/event/add", (req, res) => {
-  const { name, start_date, end_date, e_desc, e_location } = req.body;
+  const { id, name, start_date, end_date, e_desc, e_location } = req.body;
+  console.log("EVENT ID ==> ", id);
   const obj = {
+    id: id.substring(id.length - 5),
     name: name,
     start_date: dateFormat(start_date, "yyyy-mm-dd"),
     end_date: dateFormat(end_date, "yyyy-mm-dd"),

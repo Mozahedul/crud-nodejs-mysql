@@ -1,48 +1,88 @@
-<%- include('../partials/header.ejs') %>
+<%- include('../partials/header.ejs'); %>
 
 <div class="container">
-    <% if (serverError.length > 0) { %>
-    <div class="alert alert-warning"><%= serverError %> </div>
-    <% } %>
+  <% if (serverError.length > 0) { %>
+  <div class="alert alert-warning"><%= serverError %></div>
+  <% } %>
 </div>
 
-<div class="container mt-5">
-    <form action="/event/add" method="POST">
-        <input type="hidden" name="id" value="">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId"
-                placeholder="Input Name">
-        </div>
+<h2 class="text-center">Add Your Event</h2>
+<div
+  class="container mb-5"
+  style="
+    width: 440px;
+    background-color: #f2f2f2;
+    padding: 30px;
+    border-radius: 10px;
+  "
+>
+  <div class="text-right">
+    <a href="/" class="btn btn-secondary btn-sm">View Events</a>
+  </div>
+  <form action="/event/add" method="POST">
+    <input type="hidden" name="id" value="<%= new Date().getTime(); %>" />
+    <div class="form-group">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        id="name"
+        aria-describedby="helpId"
+        placeholder="Input Name"
+      />
+    </div>
 
-        <div class="form-group">
-            <label for="start_date">Start Date</label>
-            <input type="date" class="form-control" name="start_date" id="start_date" aria-describedby="helpId"
-                placeholder="Insert Start Date">
-        </div>
+    <div class="form-group">
+      <label class="form-label" for="start_date">Start Date</label>
+      <input
+        type="date"
+        class="form-control"
+        name="start_date"
+        id="start_date"
+        aria-describedby="helpId"
+        placeholder="Insert Start Date"
+      />
+    </div>
 
-        <div class="form-group">
-            <label for="end_date">End Date</label>
-            <input type="date" class="form-control" name="end_date" id="end_date" aria-describedby="helpId"
-                placeholder="Insert End Date">
-        </div>
+    <div class="form-group">
+      <label class="form-label" for="end_date">End Date</label>
+      <input
+        type="date"
+        class="form-control"
+        name="end_date"
+        id="end_date"
+        aria-describedby="helpId"
+        placeholder="Insert End Date"
+      />
+    </div>
 
-        <div class="form-group">
-            <label for="e_desc">Description</label>
-            <textarea class="form-control" name="e_desc" id="e_desc" rows="3"></textarea>
-        </div>
+    <div class="form-group">
+      <label class="form-label" for="e_desc">Description</label>
+      <textarea
+        class="form-control"
+        name="e_desc"
+        id="e_desc"
+        rows="2"
+      ></textarea>
+    </div>
 
-        <div class="form-group">
-            <label for="e_location">Location</label>
-            <textarea class="form-control" name="e_location" id="e_location" rows="3"></textarea>
-        </div>
+    <div class="form-group">
+      <label class="form-label" for="e_location">Location</label>
+      <textarea
+        class="form-control"
+        name="e_location"
+        id="e_location"
+        rows="2"
+      ></textarea>
+    </div>
 
-        <div class="form-group">
-            <label for="submit">Click Here to submit</label>
-            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-        </div>
-
-    </form>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-block" name="submit">
+        Add Event
+      </button>
+    </div>
+  </form>
 </div>
 
 <%- include('../partials/footer.ejs') %>
