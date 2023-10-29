@@ -38,19 +38,19 @@ const publicDirectroy = path.join(__dirname, "/public");
 app.use(express.static(publicDirectroy));
 
 // Create a mysql connection
-// const db = mysql.createConnection({
-//   host: "sql12.freesqldatabase.com",
-//   user: "sql12657125",
-//   password: "ukhE93N3M8",
-//   database: "sql12657125",
-// });
-
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "abuRAYHAN@1987",
-  database: "event-db",
+  host: "sql12.freesqldatabase.com",
+  user: "sql12657125",
+  password: "ukhE93N3M8",
+  database: "sql12657125",
 });
+
+// const db = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "abuRAYHAN@1987",
+//   database: "event-db",
+// });
 
 // Establish a mysql connection
 // db.connect();
