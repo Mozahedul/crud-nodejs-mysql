@@ -55,7 +55,7 @@ const db = mysql.createConnection({
 // });
 
 // Establish a mysql connection
-// db.connect();
+db.connect();
 
 // Query from database
 // Create an express server for view tha data from a database
