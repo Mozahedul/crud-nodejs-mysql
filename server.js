@@ -33,6 +33,7 @@ var now = new Date();
 
 // Define template engine
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 // Configure public Directory
 const publicDirectroy = path.join(__dirname, "/public");
