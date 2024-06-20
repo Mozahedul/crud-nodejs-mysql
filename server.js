@@ -1,7 +1,7 @@
 // Loading require modules
 const express = require("express");
-const mysql = require("mysql2");
 require("dotenv").config();
+const mysql = require("mysql2");
 const bodyParser = require("body-parser");
 const dateFormat = require("dateformat");
 const path = require("path");
