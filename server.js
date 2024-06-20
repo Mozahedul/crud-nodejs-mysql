@@ -1,6 +1,7 @@
 // Loading require modules
 const express = require("express");
 const mysql = require("mysql2");
+require("dotenv").config();
 const bodyParser = require("body-parser");
 const dateFormat = require("dateformat");
 const path = require("path");
@@ -8,7 +9,6 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const flash = require("connect-flash");
 // const { start } = require("repl");
-require("dotenv").config();
 
 // Create an express app
 const app = express();
