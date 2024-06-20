@@ -1,13 +1,14 @@
 // Loading require modules
-const express = require("express"),
-  mysql = require("mysql2"),
-  bodyParser = require("body-parser"),
-  dateFormat = require("dateformat"),
-  path = require("path"),
-  cookieParser = require("cookie-parser"),
-  session = require("express-session"),
-  flash = require("connect-flash");
-const { start } = require("repl");
+const express = require("express");
+const mysql = require("mysql2");
+const bodyParser = require("body-parser");
+const dateFormat = require("dateformat");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const flash = require("connect-flash");
+// const { start } = require("repl");
+require("dotenv").config();
 
 // Create an express app
 const app = express();
@@ -39,17 +40,17 @@ app.use(express.static(publicDirectroy));
 
 // Create a mysql connection
 const db = mysql.createConnection({
-  host: "sql12.freesqldatabase.com",
-  user: "sql12657125",
-  password: "ukhE93N3M8",
-  database: "sql12657125",
+  host: process.env.HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 // const db = mysql.createConnection({
 //   host: "localhost",
 //   user: "root",
 //   password: "abuRAYHAN@1987",
-//   database: "event-db",
+//   database: "ecommerce",
 // });
 
 // Establish a mysql connection
