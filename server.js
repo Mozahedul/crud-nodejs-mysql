@@ -165,17 +165,17 @@ app.get("/event/delete/:id", (req, res) => {
 });
 
 // Handle 404 page
-const PORT = process.env.PORT || 3000;
 app.use(function (req, res, next) {
   res.status(404).render("pages/404", {
     title: "404 Error!",
   });
 });
 
-app.listen(3232, err => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, err => {
   if (err) {
     console.log(err);
   } else {
-    console.log("Server connected");
+    console.log("SERVER CONNECTED SUCCESSFULLY");
   }
 });
