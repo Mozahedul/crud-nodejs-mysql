@@ -55,11 +55,12 @@ const db = mysql.createConnection({
 // });
 
 // Establish a mysql connection
-db.connect();
+// db.connect();
 
 // Query from database
 // Create an express server for view tha data from a database
 app.get("/", (req, res) => {
+  db.connect();
   db.query("select * from e_event order by start_date desc", (err, results) => {
     res.render("pages/index", {
       title: "Home Page",
@@ -91,6 +92,7 @@ app.post("/event/add", (req, res) => {
     e_desc: e_desc,
     e_location: e_location,
   };
+  db.connect();
   db.query("insert into e_event set ?", obj, (err, results) => {
     if (err) {
       req.flash("server-error", err.message);
@@ -106,6 +108,7 @@ app.post("/event/add", (req, res) => {
 app.get("/event/edit/:id", (req, res) => {
   let id = req.params.id;
   // Query the data form database
+  db.connect();
   db.query("select * from e_event where id = ?", `${id}`, (err, results) => {
     var string = JSON.stringify(results);
     var qResults = JSON.parse(string);
@@ -131,6 +134,8 @@ app.post("/event/update/:id", (req, res) => {
     e_desc = "${e_desc}",
     e_location = "${e_location}"
     WHERE id = ${id}`;
+
+  db.connect();
   db.query(sql, (err, results) => {
     // console.log(results);
     if (!err) {
@@ -147,6 +152,7 @@ app.post("/event/update/:id", (req, res) => {
 app.get("/event/delete/:id", (req, res) => {
   var id = req.params.id;
   var sql = `DELETE FROM e_event WHERE id = ${id}`;
+  db.connect();
   db.query(sql, (err, results) => {
     if (!err) {
       req.flash("server-success", `ID Number: ${id}! Deleted successfully`);
