@@ -165,6 +165,7 @@ app.get("/event/delete/:id", (req, res) => {
 });
 
 // Handle 404 page
+const PORT = process.env.PORT || 3000;
 app.use(function (req, res, next) {
   res.status(404).render("pages/404", {
     title: "404 Error!",
