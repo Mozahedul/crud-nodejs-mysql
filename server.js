@@ -69,6 +69,7 @@ app.get("/", (req, res) => {
     });
   });
   db.end();
+  proces.exit(1);
 });
 
 // Create a new event
@@ -104,6 +105,7 @@ app.post("/event/add", (req, res) => {
     }
   });
   db.end();
+  proces.exit(1);
 });
 
 // Edit event ## View data inside the form
@@ -124,6 +126,7 @@ app.get("/event/edit/:id", (req, res) => {
     });
   });
   db.end();
+  proces.exit(1);
 });
 
 // Update event ## Update database
@@ -150,6 +153,7 @@ app.post("/event/update/:id", (req, res) => {
     }
   });
   db.end();
+  proces.exit(1);
 });
 
 // Delete a row from a database
@@ -167,6 +171,7 @@ app.get("/event/delete/:id", (req, res) => {
     }
   });
   db.end();
+  proces.exit(1);
 });
 
 // Handle 404 page
