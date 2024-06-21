@@ -19,7 +19,7 @@ app.use(
   session({
     secret: "secret",
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: { secure: false, maxAge: 60000 },
   })
 );
@@ -68,7 +68,6 @@ app.get("/", (req, res) => {
       serverSuccess: req.flash("server-success"),
     });
   });
-  db.end();
 });
 
 // Create a new event
@@ -103,7 +102,6 @@ app.post("/event/add", (req, res) => {
       res.redirect("/");
     }
   });
-  db.end();
 });
 
 // Edit event ## View data inside the form
@@ -123,7 +121,6 @@ app.get("/event/edit/:id", (req, res) => {
       items: qResults,
     });
   });
-  db.end();
 });
 
 // Update event ## Update database
@@ -149,7 +146,6 @@ app.post("/event/update/:id", (req, res) => {
       res.redirect("/event/edit");
     }
   });
-  db.end();
 });
 
 // Delete a row from a database
@@ -166,7 +162,6 @@ app.get("/event/delete/:id", (req, res) => {
       res.redirect("/");
     }
   });
-  db.end();
 });
 
 // Handle 404 page
